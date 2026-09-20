@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alimenta Campus — Sistema de Restaurante Universitário</title>
+  <meta name="description" content="Acesso ao Alimenta Campus — UDESC Alto Vale. Entre com seu ID UDESC ou com usuário e senha." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Nunito", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #06402b;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fundo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 64, 43, 0.82);
+    }
+
+    .container {
+      position: relative;
+      display: flex;
+      width: 100%;
+      max-width: 1280px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 96px;
+      gap: 40px;
+    }
+
+    .logo {
+      width: 430px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35));
+    }
+
+    .card {
+      width: 100%;
+      max-width: 430px;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 44px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+    }
+
+    .card h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #06402b;
+      line-height: 1.2;
+    }
+
+    .card .subtitulo {
+      margin-top: 4px;
+      font-size: 16px;
+      color: #06402b;
+    }
+
+    .botao {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 24px;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+
+    .botao-udesc {
+      margin-top: 32px;
+      background: #06402b;
+    }
+    .botao-udesc:hover { background: #085038; }
+
+    .botao-udesc img { height: 40px; width: auto; flex-shrink: 0; }
+
+    .botao-udesc .texto { flex: 1; }
+    .botao-udesc .titulo {
+      display: block;
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+    .botao-udesc .descricao {
+      display: block;
+      margin-top: 2px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.2;
+    }
+
+    .seta {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .botao:hover .seta { transform: translateX(4px); }
+
+    .divisor {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .divisor .linha {
+      flex: 1;
+      height: 1px;
+      background: rgba(6, 64, 43, 0.2);
+    }
+    .divisor span { font-size: 14px; color: #06402b; }
+
+    .botao-usuario {
+      margin-top: 28px;
+      background: #ecf3f1;
+      padding: 20px 24px;
+    }
+    .botao-usuario:hover { background: #ddeae7; }
+
+    .botao-usuario img { width: 30px; height: 30px; flex-shrink: 0; }
+
+    .botao-usuario .texto { flex: 1; }
+    .botao-usuario .titulo {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      color: #06402b;
+      line-height: 1.3;
+    }
+    .botao-usuario .descricao {
+      display: block;
+      margin-top: 2px;
+      font-size: 11px;
+      color: rgba(6, 64, 43, 0.7);
+      line-height: 1.2;
+    }
+
+    .aviso {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #ecf3f1;
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+    .aviso img { width: 30px; height: 30px; flex-shrink: 0; }
+    .aviso p {
+      font-size: 12.5px;
+      line-height: 1.35;
+      color: rgba(6, 64, 43, 0.9);
+    }
+    .aviso p span { display: block; white-space: nowrap; }
+
+    /* Responsivo: empilha no celular */
+    @media (max-width: 1024px) {
+      .container {
+        flex-direction: column;
+        justify-content: center;
+        padding: 56px 24px;
+        gap: 48px;
+      }
+      .logo { width: 320px; }
+    }
+    @media (max-width: 480px) {
+      .logo { width: 240px; }
+      .card { padding: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <img class="fundo" src="img/background.png" alt="" />
+  <div class="overlay"></div>
+
+  <div class="container">
+    <img class="logo" src="img/logo-alimenta-campus.png" alt="Alimenta Campus — UDESC" />
+
+    <div class="card">
+      <h1>Bem-Vindo(a)!</h1>
+      <p class="subtitulo">Faça o login para continuar</p>
+
+      <button class="botao botao-udesc" type="button">
+        <img src="img/logo-udesc.png" alt="" />
+        <span class="texto">
+          <span class="titulo">Entrar com ID UDESC</span>
+          <span class="descricao">Será redirecionado(a) para o site ID UDESC.</span>
+        </span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </button>
+
+      <div class="divisor">
+        <span class="linha"></span>
+        <span>ou</span>
+        <span class="linha"></span>
+      </div>
+
+      <button class="botao botao-usuario" type="button">
+        <img src="img/icon-user.png" alt="" />
+        <span class="texto">
+          <span class="titulo">Entrar com usuário e senha</span>
+          <span class="descricao">Uso para administradores da cantina.</span>
+        </span>
+        <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="#06402b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </button>
+
+      <div class="aviso">
+        <img src="img/icon-info.png" alt="" />
+        <p>
+          <span>O acesso ao sistema é exclusivo para alunos,</span>
+          <span>servidores e comunidade da UDESC Alto Vale</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
