@@ -178,7 +178,7 @@
         <h1>Bem-Vindo(a)!</h1>
         <p class="sub">Faça o login para continuar</p>
 
-        <form action="#">
+        <form action="home.html">
           <label class="field" for="usuario">Usuário</label>
           <div class="input-box">
             <img src="img/icon-user.png" alt="" />
@@ -210,16 +210,26 @@
 
         <div class="divider"><span>ou</span></div>
 
-        <button type="button" class="btn-udesc">
+        <a href="index.html" class="btn-udesc" style="text-decoration:none">
           <img class="udesc-logo" src="img/logo-udesc-colorida.png" alt="UDESC" />
           <span class="texto">
             <span class="titulo">Entrar com ID UDESC</span>
             <span class="desc">Será redirecionado(a) para o site ID UDESC.</span>
           </span>
           <img class="seta" src="img/icon-arrow.png" alt="" />
-        </button>
+        </a>
       </main>
     </div>
   </div>
+  <script>
+    const senhaInput = document.getElementById('senha');
+    const eyeBtn = document.querySelector('.eye-btn');
+    eyeBtn.addEventListener('click', () => {
+      const mostrando = senhaInput.type === 'text';
+      senhaInput.type = mostrando ? 'password' : 'text';
+      eyeBtn.querySelector('img').src = mostrando ? 'img/icon-eye.png' : 'img/icon-eyeoff.png';
+      eyeBtn.setAttribute('aria-label', mostrando ? 'Mostrar senha' : 'Ocultar senha');
+    });
+  </script>
 </body>
 </html>
