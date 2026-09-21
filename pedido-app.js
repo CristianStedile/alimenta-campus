@@ -4,7 +4,10 @@
         macarronada: { name: 'Macarronada do dia', description: 'Molho caseiro e queijo ralado', price: 50 },
         guarana: { name: 'Guaraná 250ml', description: 'Bebida gelada', price: 50 },
         suco: { name: 'Suco natural', description: '300ml', price: 40 },
-        salada: { name: 'Salada de frutas', description: 'Frutas da estação', price: 30 }
+        salada: { name: 'Salada de frutas', description: 'Frutas da estação', price: 30 },
+        refrigerante: { name: 'Refrigerante 250ml', description: 'Bebida gelada', price: 50 },
+        pastel: { name: 'Pastel', description: 'Feito na hora', price: 50 },
+        agua: { name: 'Água mineral', description: 'Garrafa de 500ml', price: 20 }
     };
 
     function formatCredits(value) {

@@ -132,7 +132,7 @@
         .home-cta {
             margin-top: 25px;
             min-height: 66px;
-            width: min(100%, 520px);
+            width: 100%;
             display: flex;
             align-items: center;
             gap: 14px;
@@ -529,6 +529,85 @@
             color: red
         }
 
+        .standard-products {
+            margin-top: 12px;
+            padding: 18px
+        }
+
+        .standard-products-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 14px
+        }
+
+        .standard-products-heading h2 {
+            font-size: 23px;
+            font-weight: 800
+        }
+
+        .standard-products-heading p {
+            margin-top: 3px;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        .standard-products-note {
+            color: var(--muted);
+            font-size: 13px;
+            white-space: nowrap
+        }
+
+        .standard-products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        /* A Home mostra somente a refeição do dia; a semana fica na tela Cardápio. */
+        .menu-panel > .meal:nth-of-type(n+2),
+        .standard-products {
+            display: none
+        }
+
+        .standard-product {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid var(--line);
+            border-radius: 11px;
+            background: var(--white)
+        }
+
+        .standard-product-icon {
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            background: var(--mint);
+            font-size: 21px
+        }
+
+        .standard-product strong,
+        .standard-product span {
+            display: block
+        }
+
+        .standard-product strong {
+            font-size: 14px
+        }
+
+        .standard-product div span {
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 12px
+        }
+
         @media(max-width:900px) {
             .app {
                 grid-template-columns: 1fr
@@ -641,6 +720,16 @@
                 grid-template-columns: 1fr
             }
 
+            .standard-products-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 5px
+            }
+
+            .standard-products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
             .meal-body {
                 grid-template-columns: 135px 1fr
             }
@@ -653,6 +742,12 @@
                 display: none
             }
         }
+
+        @media(max-width:480px) {
+            .standard-products-grid {
+                grid-template-columns: 1fr
+            }
+        }
     </style>
 </head>
 
@@ -663,7 +758,7 @@
                 alt="Alimenta Campus">
             <nav class="nav" aria-label="Menu principal"><a class="nav-link active" href="#"><img
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAATFJREFUeAHtVcENwjAMdBF/ugFsACN0BDaAEWAC2KAwAWwAG1AmgA3KBsAE5iwikVopDW0qeHCS1Six7xLHjYl+Hcw8gB1gJxlTm4DAGHblF2Q8pTYA4pTLsaBQsFJon0pOOlWnPTROMQhGsNwizW1Ssxm9PqI6QOBMpW0Lix1+MWxVO8WGYKMIZh5xSxWTujaogxqlqOoKtHPCxSLIuEYRsLvIEpej7bSihlAp3r8TzCgQ+PkaFTi7HwTLXZYWQRRFmWP6pie8BCG2xWdS4bOGaGU1d8gPfQ8fr2r2TqnBGTZXc6mvWB3Bu74rpPJGH8A3pcHwF/wLBhHsUYuw/8MjLIFJT9tR8R0cmO9QmrPiKFuLDZ/gTBqm0+ccHjlbfTVSorKwtHbWFJnw4XW60LfwADOpCDjzhklzAAAAAElFTkSuQmCC"
-                        alt="">Início</a><a class="nav-link" href="home.html"><img
+                        alt="">Início</a><a class="nav-link" href="cardapio.html"><img
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAnBJREFUeAGtVkGL2kAUfjGL4qpki0W0FoqB4k3bBpYWXChWFEG8SWkvlZ566FF6KJSWpf0Dhd68lf0X0h5kSz1Jj3rx4EVUtCBqsCbpmzaz7GYzMTH5Ts/nl/lm5n1vZgBMsF6vT7fb7R8Sj0ajn6qqahhymqbJk8nkF7DBN5vNO/1+v0X4YBfT6fQcB9fq9fqRoigbEpO89h8q4zPfYrH4hHyF8s1wYJbEFYFDkNW/Ra03PoQV8QC8AVnRKc/zO7fRB+7hGw6HP8BmzbwQ1JLJ5ENwg/F4fK4bRMZ6quhYYgRZN8SVAlcqlUOS0wxgjb2rhgGO40CvTUD3w5XB8vn8DXDQAq63dLVaOeKbCm42G6sZ229ou4LL5fIdlk4x5klpBoPBGXgtmE6nv2O9PhIB4hPQ64YT+SaK4gvwWhCholk+oCinG4YrlUrhSCRSwFgBF7BtmkKhcAsMDvUckiQd0r5qtVpPGTSO1NtuH1quELdRpHE8Hj9m0DTceh6Pty9UCG+br7AP2u32Mzpjci/u4lNup9N5zeJYrjCRSDyicTgcFq24tVpNoHEsFsvDPoKBQECicSgUumnFLZfL92gcjUaPYR/gsTW3YwSCXq/3/hKV2TqWKwwGg0dgE36//7HdcZkwWr1YLIZYXFmWf7tuCyP05jcF1lu4/LvRaMTAiSC5WI25bDb7AGwil8vddySYyWSutQE+JUzdhy3BG3OpVOoJOBHEet015gRBkMy42He3jTk86E/ACarVaoQ+av/5HNHtdp8z6Bz+ffGuIe+g2Wz2ChyCn8/nL/WDWcWH1Wdg3/YcHu4nZFK62BmL+xe3NoOe6UHCoQAAAABJRU5ErkJggg=="
                         alt="">Cardápio</a><a class="nav-link" href="recarga.html">
                             <img
@@ -713,25 +808,68 @@
                         <div class="meal">
                             <div class="meal-head"><strong><img
                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAjJJREFUeAGdlU1oE0EUx9/MLLvZNNJQaJJqRWlzkYLgpULEg4dSqUU81RbEj4O3eFIUEbEWxFNFD17bIlJ68GIttQdBRFBQPHnwEjyImKTg4mc+d+Z1dtOkoWx2Z/Nflt2dfe83b2fnP0PAX7R/InOYxHsXCcIhFNxwGpmpY35pjclb9EvWOrST5NTYNBj6MtbqAJy3UwQQugwKIh5tNHVhMi8qtX6P94JGzRuFxefzQVV7wVnq4um6KFe8OgWtJ/L4x8LqFRXwbjiRFXNZsSeYGjoWnqxRCKFW8GB26k4nsNuzzu5DSLFmrjk8+NrvY4vv18fAAg4h5FY+cGnyForOZEJlWA6qEFIuXNg45x9FoBs1xtzm/tlCQNdwDEh2hiw2nExAaHg6bagE9oweeQghRSGXU/tRBM6Ct6N94E4GC/YGckFT5099hjZvqME1VlEJFtX6yN7LZx7Bjj+C4fx3+S4oyv5Tyiamx7+pdNAaw+TMSS5njfragehkvyt9/X7z38cvb50WSIPROzR6zOjrm9tc2TjeWs8Jknsy/LYynLh1ZaJD+9/Is/GMTZc3rq1KCysvZ6lplKFbNcEoD41dde7ah0EUll7EaDTSnR23wSwee7D5dN31hOdOlDg38Qvq9h4II0RkMfNafmHVAYtOcEfawMx4FiP6vChVaSDUjFhi48OBYrH4v/1VoOPiR0dO6Af3zUqjZaSRGhNA/jyq0Z+iZj+zX326blnWX/DY+rYAqb2+R9U1/hoAAAAASUVORK5CYII="
-                                        alt="">Noite</strong><span class="hours">Das 7:00 às 17:00</span></div>
+                                        alt="">Hoje</strong><span class="hours">Janta</span></div>
                             <div class="meal-body">
                                 <div class="food">
                                     <img src="img/image 3.png" alt="">
                                 </div>
                                 <ul class="meal-list">
-                                    <li>X Burguer<span class="meal-price">50 créditos</span></li>
-                                    <li>Coca-Cola 250ml<span class="meal-price">50 créditos</span></li>
+                                    <li>X Burguer</li>
+                                    <li>Coca-Cola 250ml</li>
+                                    <span class="meal-price">50 créditos</span>
+                                </ul>
+                            </div><div class="meal-head"><strong><img
+                                        src="img/icon-dia.png"
+                                        alt="">Hoje</strong><span class="hours">Almoço</span></div>
+                            <div class="meal-body">
+                                <div class="food">
+                                    <img src="img/image 4.png" alt="">
+                                </div>
+                                <ul class="meal-list">
+                                    <li>Macarronada</li>
+                                    <li>Guaraná 250ml</li>
+                                   <span class="meal-price">50 créditos</span>
                                 </ul>
                             </div>
                         </div>
                         <div class="meal">
                             <div class="meal-head"><strong><img
                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAn9JREFUeAGtVUtrE1EUPnNnmqSTtupCMxOi7SKdJFCLCzdK6UpKsYnRXSS0NRXxgYjoH6h/oEQoBBfaVqigu5pSoVYRcVlEzKp1xFebB3RRNY9mOpnx3jQJM5rHjPrBcO953O/ee849ZwBMgPX5eDP+yIzzvgFv0ox/Q3IuEhTxQEGL9Y7RkQ+mydV8calr8JhbpyxI97Rip9Aj0Afs8/AXQNxY4EUzB+dEcKWZvdW1y2jvd7vs7iM3KYrqo9raEtmV1an81lYGmxRD5I4x/zrdxT5KTj+5g0W1okZ8JJAv5XYsgJk161S63Qqp2Tij2QAdPD8cZVjr6dT9BbeOnBg7BUGwD/im0w8WThHZER6WVVlpeDvE0Gp6/ll5A27c/zL/aePyj9fvxOrhGi1E3IWArBSKLcNGs9ZiaiZuq0tST8l2dzswMRhBKVe0kJwYJu844bkFBpONvSiS7HomhvUcdu4fPL5JBEXajaXnFq+BLPcDzYBRUBTqIyOOewxZ2q6Q+fabt04mv/YtiT/dKRUFEoiGIYPcQFmZBBnLBwO4WtXXDUtO/BrF+VbBILLLq1OVqW5NXfLCe3ETsVYJDADZrGqloP60aeYU7iW9/Lj/OTlBejbOUgzTvAJppKbn9gqJnzj7yiL0eEHzEGoT7mJQVLOFpczjZZL5WtXhJJWUnd8ugUNG221SauYpq/EF143Q5O52Npx5uNirI28CGr/7Qx0nvbdBKh1VVDWRE79Eceg24F/ARc407Yr4VqQrmvrhlOG6HpqsxLAGftQf08okR47Q0N1GHA13lb//DEvrn9d0SttegVSBm9RHZGdH4H+Av3TO8Ns3DdbjcZrx/wX0Mc1hqcDSOwAAAABJRU5ErkJggg=="
-                                        alt="">Dia</strong><span class="hours">Das 17:00 às 22:00</span></div>
+                                        alt="">Terça-feira</strong><span class="hours">Almoço</span></div>
                             <div class="meal-body">
                                 <div class="food">
                                     <img src="img/image 4.png" alt="">
                                 </div>
+                                <ul class="meal-list">
+                                    <li>Macarronada<span class="meal-price">50 créditos</span></li>
+                                    <li>Guaraná 250ml<span class="meal-price">50 créditos</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <div class="meal-head"><strong>Quarta-feira</strong><span class="hours">Almoço</span></div>
+                            <div class="meal-body">
+                                <div class="food"><img src="img/image 4.png" alt=""></div>
+                                <ul class="meal-list">
+                                    <li>Arroz com frango<span class="meal-price">50 créditos</span></li>
+                                    <li>Salada fresca<span class="meal-price">50 créditos</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <div class="meal-head"><strong>Quinta-feira</strong><span class="hours">Almoço</span></div>
+                            <div class="meal-body">
+                                <div class="food"><img src="img/image 3.png" alt=""></div>
+                                <ul class="meal-list">
+                                    <li>Feijão tropeiro<span class="meal-price">50 créditos</span></li>
+                                    <li>Suco do dia<span class="meal-price">50 créditos</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <div class="meal-head"><strong>Sexta-feira</strong><span class="hours">Almoço</span></div>
+                            <div class="meal-body">
+                                <div class="food"><img src="img/image 4.png" alt=""></div>
                                 <ul class="meal-list">
                                     <li>Macarronada<span class="meal-price">50 créditos</span></li>
                                     <li>Guaraná 250ml<span class="meal-price">50 créditos</span></li>
@@ -743,7 +881,7 @@
                         <article class="panel status"><img
                                 src="data:image/png;base64,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"
                                 alt="">
-                            <p><strong>Restaurante Aberto</strong><span>Almoço disponível até as 17:00</span></p>
+                            <p><strong>Restaurante Aberto</strong><span>Almoço disponível até as 13:00</span></p>
                         </article>
                         <article class="panel history">
                             <h2 class="history-title"><img
@@ -772,6 +910,21 @@
                                         class="negative">-50 créditos</span><span>50 créditos</span></div>
                             </div>
                         </article>
+                    </div>
+                </section>
+                <section class="panel standard-products" aria-labelledby="standard-products-title">
+                    <div class="standard-products-heading">
+                        <div>
+                            <h2 id="standard-products-title">Produtos da cantina</h2>
+                            <p>Opções disponíveis todos os dias para complementar seu pedido.</p>
+                        </div>
+                        <span class="standard-products-note">Valores em créditos</span>
+                    </div>
+                    <div class="standard-products-grid">
+                        <article class="standard-product"><span class="standard-product-icon" aria-hidden="true">🥤</span><div><strong>Suco natural</strong><span>40 créditos</span></div></article>
+                        <article class="standard-product"><span class="standard-product-icon" aria-hidden="true">🥫</span><div><strong>Refrigerante</strong><span>50 créditos</span></div></article>
+                        <article class="standard-product"><span class="standard-product-icon" aria-hidden="true">🥟</span><div><strong>Pastel</strong><span>50 créditos</span></div></article>
+                        <article class="standard-product"><span class="standard-product-icon" aria-hidden="true">💧</span><div><strong>Água mineral</strong><span>20 créditos</span></div></article>
                     </div>
                 </section>
             </div>

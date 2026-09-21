@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Cardápio | Alimenta Campus</title>
+    <link rel="stylesheet" href="pedidos.css">
+</head>
+
+<body data-page="cardapio">
+    <div class="app">
+        <aside class="sidebar">
+            <img class="brand" src="img/logo-alimenta-campus.png" alt="Alimenta Campus">
+            <nav class="nav" aria-label="Menu principal">
+                <a class="nav-link" href="home.html"><img src="img/icon-home.png" alt="">Início</a>
+                <a class="nav-link" href="recarga.html"><img src="img/icon-carteira.png" alt="">Recarregar</a>
+                <a class="nav-link" href="pedidos.html"><img src="img/icon-garfoefaca.png" alt="">Pedidos</a>
+                <a class="nav-link active" href="cardapio.html"><img src="img/icon-cardapio.png" alt="">Cardápio</a>
+                <a class="nav-link" href="#"><img src="img/icon-interrogação.png" alt="">Ajuda</a>
+            </nav>
+            <a class="logout" href="#"><img src="img/icon-sair.png" alt=""><span>Sair</span></a>
+        </aside>
+
+        <main class="main">
+            <div class="content">
+                <header class="page-header">
+                    <div>
+                        <h1>Cardápio da semana</h1>
+                        <p class="page-intro">Consulte as refeições programadas e as opções disponíveis todos os dias.</p>
+                    </div>
+                    <a class="primary-action" href="novo-pedido.html"><span class="action-icon">+</span>Fazer novo pedido</a>
+                </header>
+
+                <section class="week-menu-panel catalog-panel" aria-labelledby="week-menu-title">
+                    <div class="week-menu-heading">
+                        <div>
+                            <h2 id="week-menu-title">Refeições da semana</h2>
+                            <p>O lanche do dia tem valor de 50 créditos.</p>
+                        </div>
+                        <span class="week-menu-note">Valores em créditos</span>
+                    </div>
+
+                    <div class="week-menu-grid">
+                        <article class="week-card is-today">
+                            <div class="week-card-head"><strong>Hoje</strong><span>Almoço</span></div>
+                            <div class="week-card-body">
+                                <div class="week-card-photo"><img src="img/image 3.png" alt="X-Burguer com bebida"></div>
+                                <ul class="week-card-items">
+                                    <li>X-Burguer<br></li>
+                                    <li>Coca-Cola 250ml<br></li>
+                                    <span>50 créditos</span>
+                                </ul>
+                            </div>
+                        </article>
+                        <article class="week-card">
+                            <div class="week-card-head"><strong>Terça-feira</strong><span>Almoço</span></div>
+                            <div class="week-card-body">
+                                <div class="week-card-photo"><img src="img/image 4.png" alt="Macarronada"></div>
+                                <ul class="week-card-items"><li>Macarronada<br></li><li>Guaraná 250ml<br></li>
+                                <span>50 créditos</span></ul>
+                            </div>
+                        </article>
+                        <article class="week-card">
+                            <div class="week-card-head"><strong>Quarta-feira</strong><span>Almoço</span></div>
+                            <div class="week-card-body">
+                                <div class="week-card-photo"><img src="img/image 4.png" alt="Arroz com frango"></div>
+                                <ul class="week-card-items"><li>Arroz com frango<br></li><li>Salada fresca<br></li><span>50 créditos</span></ul>
+                            </div>
+                        </article>
+                        <article class="week-card">
+                            <div class="week-card-head"><strong>Quinta-feira</strong><span>Almoço</span></div>
+                            <div class="week-card-body">
+                                <div class="week-card-photo"><img src="img/image 3.png" alt="Feijão tropeiro"></div>
+                                <ul class="week-card-items"><li>Feijão tropeiro<br></li><li>Suco do dia<br></li><span>50 créditos</span></ul>
+                            </div>
+                        </article>
+                        <article class="week-card">
+                            <div class="week-card-head"><strong>Sexta-feira</strong><span>Almoço</span></div>
+                            <div class="week-card-body">
+                                <div class="week-card-photo"><img src="img/image 4.png" alt="Macarronada"></div>
+                                <ul class="week-card-items"><li>Macarronada<br></li><li>Guaraná 250ml<br></li><span>50 créditos</span></ul>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="standard-products panel" aria-labelledby="standard-products-title">
+                    <div class="standard-products-heading">
+                        <div>
+                            <h2 id="standard-products-title">Produtos padrão da cantina</h2>
+                            <p>Opções disponíveis todos os dias para complementar seu pedido.</p>
+                        </div>
+                        <span class="standard-products-note">Valores em créditos</span>
+                    </div>
+                    <div class="standard-products-grid">
+                        <article class="standard-product"><span class="standard-product-icon" aria-hidden="true">🥤</span><div><strong>Suco natural</strong><span>40 créditos</span></div></article>
+                        <article class="standard-product"><span class="standard-product-icon" aria-hidden="true">🥫</span><div><strong>Refrigerante</strong><span>50 créditos</span></div></article>
+                        <article class="standard-product"><span class="standard-product-icon" aria-hidden="true">🥟</span><div><strong>Pastel</strong><span>50 créditos</span></div></article>
+                        <article class="standard-product"><span class="standard-product-icon" aria-hidden="true">💧</span><div><strong>Água mineral</strong><span>20 créditos</span></div></article>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

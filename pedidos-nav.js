@@ -18,6 +18,7 @@
     var recarregar = find('Recarregar');
     var cardapio = find('Cardápio');
     var ajuda = find('Ajuda');
+    if (cardapio) cardapio.href = 'cardapio.html';
     var cardapioIcon = cardapio && cardapio.querySelector('img');
     if (cardapioIcon) cardapioIcon.src = 'img/icon-cardapio.png';
 
