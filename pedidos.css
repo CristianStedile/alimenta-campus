@@ -65,10 +65,16 @@ a { color: inherit }
 .nav-link.active { background: var(--active) }
 
 .nav-link img, .logout img {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
     margin-right: 31px
+}
+
+.nav-link img[src*="icon-cardapio"] {
+    width: 36px;
+    height: 36px;
+    transform: scale(1.35)
 }
 
 .logout {

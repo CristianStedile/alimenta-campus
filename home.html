@@ -81,6 +81,12 @@
             margin-right: 31px
         }
 
+        .nav-link img[src*="icon-cardapio"] {
+            width: 32px;
+            height: 32px;
+            transform: scale(1.35)
+        }
+
         .logout {
             margin-top: auto;
             background: var(--red)
@@ -173,8 +179,11 @@
         }
 
         .home-cta-arrow {
-            font-size: 26px;
-            line-height: 1
+            width: 24px;
+            height: 24px;
+            flex: 0 0 24px;
+            object-fit: contain;
+            margin-left: auto
         }
 
         .home-cta + .summary { margin-top: 22px }
@@ -676,7 +685,7 @@
                 <a class="home-cta" href="novo-pedido.html">
                     <span class="home-cta-icon" aria-hidden="true">+</span>
                     <span class="home-cta-copy"><strong>Fazer novo pedido</strong><span>Escolha seu lanche e retire na cantina sem fila.</span></span>
-                    <span class="home-cta-arrow" aria-hidden="true">→</span>
+                    <img class="home-cta-arrow" src="img/Arrow right (2).png" alt="">
                 </a>
                 <section class="summary">
                     <article class="summary-card"><span class="icon-disc"><img
