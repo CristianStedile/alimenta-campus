@@ -14,9 +14,9 @@
             <img class="brand" src="img/logo-alimenta-campus.png" alt="Alimenta Campus">
             <nav class="nav" aria-label="Menu principal">
                 <a class="nav-link" href="home.html"><img src="img/icon-home.png" alt="">Início</a>
-                <a class="nav-link active" href="home.html"><img src="img/icon-garfoefaca.png" alt="">Cardápio</a>
                 <a class="nav-link" href="recarga.html"><img src="img/icon-carteira.png" alt="">Recarregar</a>
                 <a class="nav-link" href="pedidos.html"><img src="img/icon-garfoefaca.png" alt="">Pedidos</a>
+                <a class="nav-link active" href="home.html"><img src="img/icon-cardapio.png" alt="">Cardápio</a>
                 <a class="nav-link" href="#"><img src="img/icon-interrogação.png" alt="">Ajuda</a>
             </nav>
             <a class="logout" href="#"><img src="img/icon-sair.png" alt=""><span>Sair</span></a>
@@ -35,7 +35,7 @@
                 <div class="order-layout">
                     <section class="catalog-panel" aria-labelledby="menu-title">
                         <h2 class="catalog-title" id="menu-title">Cardápio</h2>
-                        <p class="catalog-subtitle">Disponível para retirada hoje na cantina.</p>
+                        <p class="catalog-subtitle">Disponível para retirada hoje na cantina. Valores em créditos: R$ 1,00 = 10 créditos.</p>
 
                         <article class="featured-product" data-product-id="x-burguer">
                             <span class="featured-label">Lanche do dia</span>
@@ -43,7 +43,7 @@
                             <div class="product-copy">
                                 <h3 class="product-name">Combo X-Burguer</h3>
                                 <p class="product-description">X-Burguer artesanal acompanhado de Coca-Cola 250ml.</p>
-                                <strong class="product-price">R$ 16,50</strong>
+                                <strong class="product-price">50 créditos</strong>
                                 <button class="product-add" type="button" data-add="x-burguer">Adicionar</button>
                             </div>
                         </article>
@@ -52,19 +52,19 @@
                         <div class="product-grid">
                             <article class="product-card" data-product-id="macarronada">
                                 <div class="product-photo"><img src="img/image 4.png" alt="Macarronada do dia"></div>
-                                <div class="product-copy"><h3 class="product-name">Macarronada do dia</h3><p class="product-description">Molho caseiro e queijo ralado.</p><strong class="product-price">R$ 14,00</strong><button class="product-add" type="button" data-add="macarronada">Adicionar</button></div>
+                                <div class="product-copy"><h3 class="product-name">Macarronada do dia</h3><p class="product-description">Molho caseiro e queijo ralado.</p><strong class="product-price">50 créditos</strong><button class="product-add" type="button" data-add="macarronada">Adicionar</button></div>
                             </article>
                             <article class="product-card" data-product-id="guarana">
                                 <div class="product-photo"><span aria-hidden="true" style="font-size:34px">🥤</span></div>
-                                <div class="product-copy"><h3 class="product-name">Guaraná 250ml</h3><p class="product-description">Bebida gelada para acompanhar.</p><strong class="product-price">R$ 3,50</strong><button class="product-add" type="button" data-add="guarana">Adicionar</button></div>
+                                <div class="product-copy"><h3 class="product-name">Guaraná 250ml</h3><p class="product-description">Bebida gelada para acompanhar.</p><strong class="product-price">50 créditos</strong><button class="product-add" type="button" data-add="guarana">Adicionar</button></div>
                             </article>
                             <article class="product-card" data-product-id="suco">
                                 <div class="product-photo"><span aria-hidden="true" style="font-size:34px">🥤</span></div>
-                                <div class="product-copy"><h3 class="product-name">Suco natural</h3><p class="product-description">Sabores do dia, 300ml.</p><strong class="product-price">R$ 4,00</strong><button class="product-add" type="button" data-add="suco">Adicionar</button></div>
+                                <div class="product-copy"><h3 class="product-name">Suco natural</h3><p class="product-description">Sabores do dia, 300ml.</p><strong class="product-price">40 créditos</strong><button class="product-add" type="button" data-add="suco">Adicionar</button></div>
                             </article>
                             <article class="product-card" data-product-id="salada">
                                 <div class="product-photo"><span aria-hidden="true" style="font-size:34px">🍓</span></div>
-                                <div class="product-copy"><h3 class="product-name">Salada de frutas</h3><p class="product-description">Porção fresca com frutas da estação.</p><strong class="product-price">R$ 3,00</strong><button class="product-add" type="button" data-add="salada">Adicionar</button></div>
+                                <div class="product-copy"><h3 class="product-name">Salada de frutas</h3><p class="product-description">Porção fresca com frutas da estação.</p><strong class="product-price">30 créditos</strong><button class="product-add" type="button" data-add="salada">Adicionar</button></div>
                             </article>
                         </div>
                     </section>
@@ -74,8 +74,8 @@
                         <div id="cart-empty" class="cart-empty">Seu pedido está vazio.<br>Adicione um item do cardápio para começar.</div>
                         <div id="cart-items" class="cart-items"></div>
                         <div class="cart-totals">
-                            <div class="cart-total-row"><span>Subtotal</span><strong id="cart-subtotal">R$ 0,00</strong></div>
-                            <div class="cart-total-row total"><span>Total</span><strong id="cart-total">R$ 0,00</strong></div>
+                            <div class="cart-total-row"><span>Subtotal</span><strong id="cart-subtotal">0 créditos</strong></div>
+                            <div class="cart-total-row total"><span>Total</span><strong id="cart-total">0 créditos</strong></div>
                         </div>
                         <button class="confirm-action" id="confirm-order" type="button" disabled>Confirmar pedido</button>
                         <p class="cart-message" id="cart-message" aria-live="polite"></p>

@@ -1,15 +1,14 @@
 (function () {
-    var money = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
     var products = {
-        'x-burguer': { name: 'Combo X-Burguer', description: 'X-Burguer + Coca-Cola 250ml', price: 16.50 },
-        macarronada: { name: 'Macarronada do dia', description: 'Molho caseiro e queijo ralado', price: 14.00 },
-        guarana: { name: 'Guaraná 250ml', description: 'Bebida gelada', price: 3.50 },
-        suco: { name: 'Suco natural', description: '300ml', price: 4.00 },
-        salada: { name: 'Salada de frutas', description: 'Frutas da estação', price: 3.00 }
+        'x-burguer': { name: 'Combo X-Burguer', description: 'X-Burguer + Coca-Cola 250ml', price: 50 },
+        macarronada: { name: 'Macarronada do dia', description: 'Molho caseiro e queijo ralado', price: 50 },
+        guarana: { name: 'Guaraná 250ml', description: 'Bebida gelada', price: 50 },
+        suco: { name: 'Suco natural', description: '300ml', price: 40 },
+        salada: { name: 'Salada de frutas', description: 'Frutas da estação', price: 30 }
     };
 
-    function formatMoney(value) {
-        return money.format(value);
+    function formatCredits(value) {
+        return value.toLocaleString('pt-BR') + ' créditos';
     }
 
     function toggleDetails() {
@@ -29,10 +28,10 @@
         var itemCount = order.items.reduce(function (total, item) { return total + item.quantity; }, 0);
         var summary = order.items.map(function (item) { return item.quantity + 'x ' + item.name; }).join(' + ');
         var statusClass = { 'Recebido': 'status-received', 'Em preparação': 'status-preparing', 'Pronto para retirada': 'status-ready', 'Finalizado': 'status-finished' }[order.status] || 'status-received';
-        var detailItems = order.items.map(function (item) { return '<li>' + item.quantity + 'x ' + item.name + ' — ' + formatMoney(item.price * item.quantity) + '</li>'; }).join('');
+        var detailItems = order.items.map(function (item) { return '<li>' + item.quantity + 'x ' + item.name + ' — ' + formatCredits(item.price * item.quantity) + '</li>'; }).join('');
         article.className = 'order-card';
         article.innerHTML = '<div class="order-card-header"><div><span class="order-number">Pedido #' + order.id + '</span><span class="order-date">' + order.date + '</span></div><span class="status-chip ' + statusClass + '">' + order.status + '</span></div>' +
-            '<div class="order-card-body"><div class="order-items"><strong>' + itemCount + ' ' + (itemCount === 1 ? 'item' : 'itens') + '</strong><span>' + summary + '</span></div><div class="order-total"><small>Total</small><strong>' + formatMoney(order.total) + '</strong></div></div>' +
+            '<div class="order-card-body"><div class="order-items"><strong>' + itemCount + ' ' + (itemCount === 1 ? 'item' : 'itens') + '</strong><span>' + summary + '</span></div><div class="order-total"><small>Total</small><strong>' + formatCredits(order.total) + '</strong></div></div>' +
             '<div class="order-card-footer"><span class="pickup-note">Retire no balcão da cantina</span><button class="details-toggle" type="button" aria-expanded="false">Ver detalhes</button></div>' +
             '<div class="order-details" hidden><ul>' + detailItems + '<li>Pagamento: créditos UDESC</li></ul></div>';
         return article;
@@ -72,15 +71,15 @@
             cartItems.innerHTML = '';
             cartEmpty.hidden = count > 0;
             cartCount.textContent = count + ' ' + (count === 1 ? 'item' : 'itens');
-            subtotal.textContent = formatMoney(value);
-            total.textContent = formatMoney(value);
+            subtotal.textContent = formatCredits(value);
+            total.textContent = formatCredits(value);
             confirm.disabled = count === 0;
 
             Object.keys(quantities).forEach(function (id) {
                 var product = products[id];
                 var item = document.createElement('div');
                 item.className = 'cart-item';
-                item.innerHTML = '<div><span class="cart-item-name">' + product.name + '</span><span class="cart-item-price">' + formatMoney(product.price) + ' cada</span></div><div class="quantity-control"><button class="quantity-button" type="button" data-minus="' + id + '" aria-label="Remover uma unidade de ' + product.name + '">−</button><span class="quantity-value">' + quantities[id] + '</span><button class="quantity-button" type="button" data-plus="' + id + '" aria-label="Adicionar uma unidade de ' + product.name + '">+</button></div>';
+                item.innerHTML = '<div><span class="cart-item-name">' + product.name + '</span><span class="cart-item-price">' + formatCredits(product.price) + ' cada</span></div><div class="quantity-control"><button class="quantity-button" type="button" data-minus="' + id + '" aria-label="Remover uma unidade de ' + product.name + '">−</button><span class="quantity-value">' + quantities[id] + '</span><button class="quantity-button" type="button" data-plus="' + id + '" aria-label="Adicionar uma unidade de ' + product.name + '">+</button></div>';
                 cartItems.appendChild(item);
             });
 

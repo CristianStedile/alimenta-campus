@@ -14,6 +14,7 @@
             --active: #35ba50;
             --red: #c91b20;
             --positive: #23a447;
+            --muted: #58746b;
             --page: #fbfdfc;
             --white: #fff
         }
@@ -416,6 +417,14 @@
             padding-left: 22px
         }
 
+        .meal-price {
+            display: block;
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 400
+        }
+
         .right-col {
             display: grid;
             gap: 10px
@@ -647,7 +656,8 @@
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAATFJREFUeAHtVcENwjAMdBF/ugFsACN0BDaAEWAC2KAwAWwAG1AmgA3KBsAE5iwikVopDW0qeHCS1Six7xLHjYl+Hcw8gB1gJxlTm4DAGHblF2Q8pTYA4pTLsaBQsFJon0pOOlWnPTROMQhGsNwizW1Ssxm9PqI6QOBMpW0Lix1+MWxVO8WGYKMIZh5xSxWTujaogxqlqOoKtHPCxSLIuEYRsLvIEpej7bSihlAp3r8TzCgQ+PkaFTi7HwTLXZYWQRRFmWP6pie8BCG2xWdS4bOGaGU1d8gPfQ8fr2r2TqnBGTZXc6mvWB3Bu74rpPJGH8A3pcHwF/wLBhHsUYuw/8MjLIFJT9tR8R0cmO9QmrPiKFuLDZ/gTBqm0+ccHjlbfTVSorKwtHbWFJnw4XW60LfwADOpCDjzhklzAAAAAElFTkSuQmCC"
                         alt="">Início</a><a class="nav-link" href="home.html"><img
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAnBJREFUeAGtVkGL2kAUfjGL4qpki0W0FoqB4k3bBpYWXChWFEG8SWkvlZ566FF6KJSWpf0Dhd68lf0X0h5kSz1Jj3rx4EVUtCBqsCbpmzaz7GYzMTH5Ts/nl/lm5n1vZgBMsF6vT7fb7R8Sj0ajn6qqahhymqbJk8nkF7DBN5vNO/1+v0X4YBfT6fQcB9fq9fqRoigbEpO89h8q4zPfYrH4hHyF8s1wYJbEFYFDkNW/Ra03PoQV8QC8AVnRKc/zO7fRB+7hGw6HP8BmzbwQ1JLJ5ENwg/F4fK4bRMZ6quhYYgRZN8SVAlcqlUOS0wxgjb2rhgGO40CvTUD3w5XB8vn8DXDQAq63dLVaOeKbCm42G6sZ229ou4LL5fIdlk4x5klpBoPBGXgtmE6nv2O9PhIB4hPQ64YT+SaK4gvwWhCholk+oCinG4YrlUrhSCRSwFgBF7BtmkKhcAsMDvUckiQd0r5qtVpPGTSO1NtuH1quELdRpHE8Hj9m0DTceh6Pty9UCG+br7AP2u32Mzpjci/u4lNup9N5zeJYrjCRSDyicTgcFq24tVpNoHEsFsvDPoKBQECicSgUumnFLZfL92gcjUaPYR/gsTW3YwSCXq/3/hKV2TqWKwwGg0dgE36//7HdcZkwWr1YLIZYXFmWf7tuCyP05jcF1lu4/LvRaMTAiSC5WI25bDb7AGwil8vddySYyWSutQE+JUzdhy3BG3OpVOoJOBHEet015gRBkMy42He3jTk86E/ACarVaoQ+av/5HNHtdp8z6Bz+ffGuIe+g2Wz2ChyCn8/nL/WDWcWH1Wdg3/YcHu4nZFK62BmL+xe3NoOe6UHCoQAAAABJRU5ErkJggg=="
-                        alt="">Cardápio</a><a class="nav-link" href="recarga.html"><img
+                        alt="">Cardápio</a><a class="nav-link" href="recarga.html">
+                            <img
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAdlJREFUeAHtlb9rwkAUx++0Dop0aKXQP8Chg5N/gHbrIBQLTo5dOwhuTu7d+hcIbh2kdBF0KEWquFYEBeMiaGnFGou1JibX9xIjCv6IJikd/Ay5y+Xlvvfeu3dHyJ5/CiV/AIrQfD5/yfN8TZZlhgiC8A7jdmISNJPJnHU6nUeYW5ZVFXnaZ/1+n5MkaTIYDGpkVxKJxGmlUrkdj8f81AvVFWhBoJ7NZq+SyaSNqB7bwOYbP+oW8Pv9rmKxeAOrbDF16WxOoFUul6+j0ejhqv8bjcYdGsfjcc90aHl+S6VSUAuNmUCIpUKhENSENXWKsbcBxBoYpRQ3ElMEIpGIx0IxhIZCoWPsKCKj0Uh/knfE4XCwmaAJbFywKIpK+g6IQXBjVKvVC5/Pl9tgaps9jACHQBnE8jpMzQnpcDj8wck4jntZVx7hcPjIFEENqF9Bj53hHLpcLiVUzWbzvtvtPi+zgRqk9Xr9azYANeJhO4JHE9kiUoY9xNVPAKjlDzitVgrHYjFfKpV6MyyI2O126na7T9bZwJ0pYmvlcbaAVvia4HZ32Jbg1E6n83N+jPZ6vSe8SpjJwJ6S2u12TnNu4XJMp9NBr9d7bpa3mFvYTA+BQOAVXiWyxwp+AV3m/T2YVDjOAAAAAElFTkSuQmCC"
                         alt="">Recarregar</a><a class="nav-link" href="#"><img
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAo9JREFUeAHdVruPEkEY/3YXj6gYSAwNsRAjXtBYWVJZQnL1dfSEgr+CP0QiGi3ESCMFjdEYEwtPi4PjlRAoPDyeARHYHb/vnL0Q2Jkd0ep+yYZhZr73awAuO7S/uVwsFhPRaPTQ7/c/WC6X5nw+r1Wr1ZfxePwN58XgH6Hl8/k7s9nsu2maFmOMPkesVquzdDp9D2l02BH6eDz+wgUpAYWuut3uB6T1CC0Q7VuWZWoI2AEoG3RdN3BpbZ45me9BYZaiMMeYESkp7MR/c0PvdDrvRbJQ80U2m72lcSSTydsgAPEYjUafQZaYqVRqH8NgikKEVwwHMgPPpk4EFP9cLhcWKoUXzpwI0T0sFovd4Pc87Xb7daPReAU8OTA7b4oymDJcaCWTwL7TarXe2XvD4fCbGy1Z6SisVCoduAikeGvre71e70RF2UKhEN8S2Gw2n8qIyK2oLcXK4v+tdVfJaOv1+hP73kWBer3efZCAsg6/azZ/rLMr8KcsNGwQFRltIBC4b6/1NYFKRU7ejUQiV3FJdeaZTCZHPp/vrowGey7bEjgYDI5BAWQpuugXLbGNfURhD3FP2j8Xi8XJlsBKpfIcFIAWLjgdC4VCj1RoarXaiwuF1w9UWhq1LCyNYjAYvI7WPcZYesAFIp7adDo9Ze6wsJh/4O9PJhlXNqiZgKjwafapjCPOQHO7R22S2iXIrMcUP5Ix4fVnu1eqHCUVbAwIJ1N15LNSGE8MJJOA9DIMg+Jrugk83yfXYkLALiDr+ADempcijoy0Q5d8EjZfB5CHsRF85Zm704PKyGQyNCP7TA4TM/eUkg5cXoKqb5bzJ2C5XD4Ih8OH1Hf39va0fr9/jHPxWSKReAv/4Yl4OfAbGeRxF9MIohgAAAAASUVORK5CYII="
@@ -700,8 +710,8 @@
                                     <img src="img/image 3.png" alt="">
                                 </div>
                                 <ul class="meal-list">
-                                    <li>X Burguer</li>
-                                    <li>Coca-Cola 250ml</li>
+                                    <li>X Burguer<span class="meal-price">50 créditos</span></li>
+                                    <li>Coca-Cola 250ml<span class="meal-price">50 créditos</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -714,8 +724,8 @@
                                     <img src="img/image 4.png" alt="">
                                 </div>
                                 <ul class="meal-list">
-                                    <li>Macarronada</li>
-                                    <li>Guaraná 250ml</li>
+                                    <li>Macarronada<span class="meal-price">50 créditos</span></li>
+                                    <li>Guaraná 250ml<span class="meal-price">50 créditos</span></li>
                                 </ul>
                             </div>
                         </div>
