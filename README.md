@@ -104,6 +104,10 @@ npm run build
 
 Os testes cobrem cadastro, hash de senha, login, expiração e rotação de tokens, limitação de tentativas, logout, autorização por posse, renovação de sessão na interface e caminhos dos protótipos.
 
+## Postman
+
+Importe a collection e o ambiente local em `postman/` para enviar as rotas da API e conferir respostas esperadas. Consulte o [guia da coleção](postman/README.md) para a sequência de uso e configuração dos pedidos de exemplo.
+
 ## Segurança e limites do MVP
 
 - As senhas são armazenadas com bcrypt e custo 12; senhas acima de 72 bytes são rejeitadas no login.

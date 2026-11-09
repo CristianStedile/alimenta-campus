@@ -1,0 +1,241 @@
+{
+  "info": {
+    "_postman_id": "3a87538d-e454-41e8-a4cf-72189fc5b2b9",
+    "name": "Alimenta Campus — API local",
+    "description": "Requisições da API do MVP. Importe também o ambiente Alimenta Campus - Local e selecione-o antes de usar.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "email", "value": "aluno@exemplo.com" },
+    { "key": "senha", "value": "Senha-segura-123" },
+    { "key": "senhaIncorreta", "value": "Senha-incorreta-123" },
+    { "key": "accessToken", "value": "" },
+    { "key": "pedidoProprio", "value": "AC-101" },
+    { "key": "pedidoAlheio", "value": "AC-102" },
+    { "key": "pedidoInexistente", "value": "NAO-EXISTE" }
+  ],
+  "item": [
+    {
+      "name": "01 — Cadastro",
+      "item": [
+        {
+          "name": "Cadastrar usuário",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"senha\": \"{{senha}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/usuarios",
+            "description": "Cria a conta usada pelas requisições de login. Ao repetir com o mesmo e-mail, a API retorna 400 por duplicidade."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Cadastro criado ou e-mail já cadastrado', function () { pm.expect(pm.response.code).to.be.oneOf([201, 400]); });",
+                  "if (pm.response.code === 201) { pm.environment.set('usuarioId', pm.response.json().id); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Cadastro duplicado — espera 400",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"senha\": \"{{senha}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/usuarios"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": { "type": "text/javascript", "exec": ["pm.test('E-mail duplicado retorna 400', function () { pm.response.to.have.status(400); });"] }
+            }
+          ]
+        },
+        {
+          "name": "Cadastro inválido — espera 400",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"email-invalido\",\n  \"senha\": \"123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/usuarios"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": { "type": "text/javascript", "exec": ["pm.test('Dados inválidos retornam 400', function () { pm.response.to.have.status(400); });"] }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "02 — Login",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"senha\": \"{{senha}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/login",
+            "description": "Salva o access token na variável de ambiente e o cookie refresh na jarra de cookies do Postman."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (pm.response.code === 200 && body.accessToken) { pm.environment.set('accessToken', body.accessToken); }",
+                  "pm.test('Login retorna access token', function () { pm.response.to.have.status(200); pm.expect(body.accessToken).to.be.a('string').and.not.empty; });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login inválido — espera 401 genérico",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"senha\": \"{{senhaIncorreta}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/login"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Credenciais incorretas retornam 401 genérico', function () { pm.response.to.have.status(401); pm.expect(pm.response.json()).to.eql({ erro: 'credenciais inválidas' }); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "03 — Pedidos",
+      "item": [
+        {
+          "name": "Listar meus pedidos",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }] },
+            "url": "{{baseUrl}}/pedidos"
+          },
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Lista protegida retorna 200', function () { pm.response.to.have.status(200); pm.expect(pm.response.json()).to.be.an('array'); });"] } }]
+        },
+        {
+          "name": "Consultar pedido próprio — espera 200 se existir",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }] },
+            "url": "{{baseUrl}}/pedidos/{{pedidoProprio}}",
+            "description": "Defina pedidoProprio com o ID de um pedido pertencente ao usuário de email. Sem esse registro, a API retorna 404."
+          },
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Pedido próprio retorna 200 ou 404 se não houver registro', function () { pm.expect(pm.response.code).to.be.oneOf([200, 404]); });"] } }]
+        },
+        {
+          "name": "Consultar pedido alheio — espera 403 se existir",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }] },
+            "url": "{{baseUrl}}/pedidos/{{pedidoAlheio}}",
+            "description": "Defina pedidoAlheio com o ID de um pedido pertencente a outra conta. Sem esse registro, a API retorna 404."
+          },
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Pedido alheio retorna 403 ou 404 se não houver registro', function () { pm.expect(pm.response.code).to.be.oneOf([403, 404]); });"] } }]
+        },
+        {
+          "name": "Pedido inexistente — espera 404",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }] },
+            "url": "{{baseUrl}}/pedidos/{{pedidoInexistente}}"
+          },
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Pedido inexistente retorna 404', function () { pm.response.to.have.status(404); });"] } }]
+        },
+        {
+          "name": "Listar pedidos com token inválido — espera 401",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "noauth" },
+            "header": [{ "key": "Authorization", "value": "Bearer token-invalido" }],
+            "url": "{{baseUrl}}/pedidos"
+          },
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Token inválido retorna 401', function () { pm.response.to.have.status(401); });"] } }]
+        },
+        {
+          "name": "Listar pedidos sem token — espera 401",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "noauth" },
+            "url": "{{baseUrl}}/pedidos"
+          },
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Rota protegida sem token retorna 401', function () { pm.response.to.have.status(401); });"] } }]
+        }
+      ]
+    },
+    {
+      "name": "04 — Renovação e logout",
+      "item": [
+        {
+          "name": "Renovar sessão",
+          "request": {
+            "method": "POST",
+            "auth": { "type": "noauth" },
+            "url": "{{baseUrl}}/auth/refresh",
+            "description": "Usa o refresh_token armazenado automaticamente na cookie jar do Postman."
+          },
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["const body = pm.response.json();", "if (pm.response.code === 200 && body.accessToken) { pm.environment.set('accessToken', body.accessToken); }", "pm.test('Refresh rotaciona a sessão e retorna access token', function () { pm.response.to.have.status(200); pm.expect(body.accessToken).to.be.a('string').and.not.empty; });"] } }]
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "auth": { "type": "noauth" },
+            "url": "{{baseUrl}}/auth/logout"
+          },
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["if (pm.response.code === 204) { pm.environment.unset('accessToken'); }", "pm.test('Logout encerra a sessão', function () { pm.response.to.have.status(204); });"] } }]
+        },
+        {
+          "name": "Renovar sem cookie — espera 401",
+          "request": {
+            "method": "POST",
+            "auth": { "type": "noauth" },
+            "url": "{{baseUrl}}/auth/refresh",
+            "description": "Envie depois do Logout, que limpa o cookie de refresh."
+          },
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Refresh sem cookie retorna 401', function () { pm.response.to.have.status(401); });"] } }]
+        }
+      ]
+    }
+  ]
+}
